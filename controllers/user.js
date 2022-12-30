@@ -196,7 +196,7 @@ const forgotPassword = asyncHandler(async (req,res) => {
   `;
     const subject = 'Password Reset Request';
     const send_to = user.email;
-    const send_from = process.env.USER_EMAIL;
+    const send_from = process.env.MAILER_USER_MAIL;
     try {
         await sendEmail(subject,message,send_to,send_from);
         res.status(200).json({message:'Reset Email send again'});
