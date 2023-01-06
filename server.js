@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 require('dotenv').config();
 const helmet = require('helmet');
+const path = require('path');
 const mongoose =require('mongoose');
 mongoose.set('strictQuery', true);
 const morgan = require('morgan');
@@ -13,7 +14,7 @@ const errorHandler = require('./middlewares/errorMiddleware');
 
 // Middlewarea
 app.use(helmet());
-app.use(express.static('public'));
+app.use("/uploads", express.static( path.join(__dirname, "uploads")));
 app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({extended:false}));
